@@ -1,0 +1,33 @@
+﻿@model Car
+
+<form asp-action="AddCar" method="post">
+    <div class="form-group" hidden>
+        <input asp-for="Id" class="form-control" value="@Guid.NewGuid().ToString()"/>
+    </div>
+    <div class="form-group">
+        <label asp-for="BrandName"></label>
+        <input asp-for="BrandName" class="form-control" />
+        <span asp-validation-for="BrandName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ModelName"></label>
+        <input asp-for="ModelName" class="form-control" />
+        <span asp-validation-for="ModelName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <div class="checkbox">
+            <label asp-for="Electric">
+                <input asp-for="Electric" />
+                @Html.DisplayNameFor(m => m.Electric)
+            </label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="PriceInEuros"></label>
+        <input asp-for="PriceInEuros" class="form-control" />
+        <span asp-validation-for="PriceInEuros" class="text-danger"></span>
+    </div>
+    <div>
+        <button type="submit" class="btn btn-success">Add car</button>
+    </div>
+</form>

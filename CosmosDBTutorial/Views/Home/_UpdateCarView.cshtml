@@ -1,0 +1,34 @@
+﻿@model Car
+
+<form asp-action="UpdateCar" method="post">
+    <div class="form-group" hidden>
+        <input asp-for="Id" class="form-control" value="@Model.Id"/>
+    </div>
+    <div class="form-group">
+        <label asp-for="BrandName"></label>
+        <input asp-for="BrandName" class="form-control" value="@Model.BrandName" />
+        <span asp-validation-for="BrandName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ModelName"></label>
+        <input asp-for="ModelName" class="form-control" value="@Model.ModelName" />
+        <span asp-validation-for="ModelName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <div class="checkbox">
+            <label asp-for="Electric">
+                <input asp-for="Electric"  value="@Model.Electric" />
+                @Html.DisplayNameFor(m => m.Electric)
+            </label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="PriceInEuros"></label>
+        <input asp-for="PriceInEuros" class="form-control"  value="@Model.PriceInEuros" />
+        <span asp-validation-for="PriceInEuros" class="text-danger"></span>
+    </div>
+    <div class="button-box">
+        <button type="submit" class="btn btn-warning">Update car</button>
+        <button type="button" class="btn btn-danger cancel-btn">Cancel</button>
+    </div>
+</form>

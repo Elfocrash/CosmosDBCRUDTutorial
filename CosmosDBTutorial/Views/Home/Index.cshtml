@@ -1,0 +1,62 @@
+﻿@model List<Car>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="row">
+    <div class="col-md-6">
+        <h3>Cars in the system now</h3>
+        @foreach (var car in Model)
+        {
+            <div class="car-row">
+                <div class="preview">
+                    <div>Brand name: @car.BrandName</div>
+                    <div>Model name: @car.ModelName</div>
+                    <div>Is electric: @car.Electric</div>
+                    <div>Price in euros: @car.PriceInEuros</div>
+                </div>
+                <div class="update-form" hidden>
+                    @await Html.PartialAsync("_UpdateCarView", car)
+                </div>
+                <div>
+                    
+
+                    <form asp-action="DeleteCar" asp-route-carId="@car.Id">
+                        <div class="button-box">
+                            <button type="button" class="btn btn-info update-car">Update Car</button>
+                            <button type="submit" class="btn btn-danger delete-car">Delete Car</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <hr />
+        }
+    </div>
+    <div class="col-md-6">
+        <h3>Add a car</h3>
+        @await Html.PartialAsync("_AddCarView", new Car())
+    </div>
+</div>
+
+@section Scripts
+{
+    <script>
+        $('.cancel-btn').click(function() {
+            var parentCarRow = $(this).closest('.car-row');
+
+            parentCarRow.find('.preview').show();
+            parentCarRow.find('.update-form').hide();
+            parentCarRow.find('.update-car').show();
+            parentCarRow.find('.delete-car').show();
+        });
+
+        $('.update-car').click(function () {
+            var parentCarRow = $(this).closest('.car-row');
+
+            parentCarRow.find('.preview').hide();
+            parentCarRow.find('.update-form').show();
+            parentCarRow.find('.update-car').hide();
+            parentCarRow.find('.delete-car').hide();
+        });
+    </script>
+}
