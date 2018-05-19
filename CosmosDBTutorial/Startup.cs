@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Cosmonaut;
+﻿using Cosmonaut;
 using Cosmonaut.Extensions;
 using CosmosDBTutorial.Models;
 using Microsoft.AspNetCore.Builder;
